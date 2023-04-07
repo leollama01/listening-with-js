@@ -1,0 +1,69 @@
+:root {
+    --bg-color: #161616;
+    --chat-color: #484848;
+    --white-color: #fff;
+    --gap: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    color: var(--white-color);
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
+
+button {
+    font-weight: 0;
+    font-size: 14px;
+    color: var(--white-color);
+    background-color: var(--bg-color);
+    padding: 10px 30px;
+    border: solid var(--chat-color) 2px;
+    border-radius: 50px;
+    transition : 1000ms;
+    transform: translateY(0);
+    cursor: pointer;
+}
+
+button:hover {
+    transition : 1000ms;
+    padding: 10px 50px;
+    transform : translateY(-0px);
+    background-color: var(--chat-color);
+}
+
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--gap);
+
+}
+
+.chat-space {
+    background-color: var(--chat-color);
+    width: 100%;
+    height: 80vh;
+    max-width: 640px;
+    padding: var(--gap);
+    overflow-y: auto;
+}
+
+.interaction-button {
+    padding: var(--gap);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.interaction-button button {
+    margin: 5px;
+}
