@@ -32,8 +32,6 @@ $(function() {
             result += event.results[i][0].transcript;
         }
 
-        console.log(result)
-        
         /**
          * Just for test
          */
@@ -54,5 +52,36 @@ $(function() {
 
 function sendRequestChatGpt() {
     console.log('send request')
+    const apiKey = "REPLACE_WITH_YOUR_KEY";
+    let chat = $('#chat')
+    let ask = $('#chat p').text().trim()
+
+    let jsonRequest = {
+        "model": "davinci", // davinci, curie, babbage, ada, griffin
+        "prompt": ask,
+        "temperature": 1,
+        "max_tokens": 500
+    }
+
+    $.ajax({
+        url: "https://api.openai.com/v1/completions",
+        type: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${apiKey}`
+        },
+        data: JSON.stringify(jsonRequest),
+        success: function(data) {
+            chat.append(` \
+                <p author="chat"> \
+                    ${data['choices'][0]['text']} \
+                </p> \
+            `)
+        },
+        error: function() {
+            alert('Request Failed')
+        }
+    });
+
 }
 
